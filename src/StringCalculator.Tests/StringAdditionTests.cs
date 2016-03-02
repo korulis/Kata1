@@ -32,5 +32,18 @@ namespace StringCalculator.Tests
             //assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        //[InlineData("-1", "negatives not allowed: -1")]
+        [InlineData("-1")]
+        public void AddThrowsForNegativeIntegers(string parameters)
+        {
+            //set up
+            var sut = new StringCalculator();
+            //exercise sut
+            //assert
+            Assert.ThrowsAny<Exception>(() => sut.Add(parameters));
+        }
+
     }
 }

@@ -12,6 +12,10 @@ namespace StringCalculator
 
         public int Add(string args)
         {
+
+            //if()
+
+
             var delimiters = ParseDelimiters(args);
             args = TruncateArguments(args);
             var result = Add(args, delimiters); 
