@@ -18,7 +18,10 @@ namespace StringCalculator.Tests
         [InlineData("2,3",5)]
         [InlineData("1\n2,3",6)]
         [InlineData("//;\n1;2", 3)]
-        [InlineData("//;\n3;2", 5)] 
+        [InlineData("//;\n3;2", 5)]
+        [InlineData("// \n3 5", 8)]
+        [InlineData("// ;\n3 ;1", 4)]
+        //[InlineData("//-;\n3-;1", 4)]
         public void AddReturnsSumOfParameters(string parameters, int expected)
         {   
             //set up

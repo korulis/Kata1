@@ -1,4 +1,3 @@
-C:\Users\Vytautas\Documents\Visual Studio 2015\Projects\StringCalculator\src\StringCalculator\obj\Debug\StringCalculator.csprojResolveAssemblyReference.cache
 C:\Users\Vytautas\Documents\Visual Studio 2015\Projects\StringCalculator\src\StringCalculator\bin\Debug\StringCalculator.dll
 C:\Users\Vytautas\Documents\Visual Studio 2015\Projects\StringCalculator\src\StringCalculator\bin\Debug\StringCalculator.pdb
 C:\Users\Vytautas\Documents\Visual Studio 2015\Projects\StringCalculator\src\StringCalculator\obj\Debug\StringCalculator.dll
