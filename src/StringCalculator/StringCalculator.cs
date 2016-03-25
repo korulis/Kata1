@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace StringCalculator
 {
+
     public class StringCalculator
     {
 
@@ -16,32 +14,13 @@ namespace StringCalculator
             //if()
 
 
-            var delimiters = ParseDelimiters(args);
+            var delimiters = DelimiterParser.ParseDelimiters(args);
             args = TruncateArguments(args);
             var result = Add(args, delimiters); 
             return result;
         }
-        private static string[] ParseDelimiters(string args)
-        {
-            var delimiters = new[] { ",", "\n" };
-            if (args.StartsWith(@"//"))
-            {
-                delimiters = GetNewDelimiter(args);
-            }
-            return delimiters;
-        }
-        private static string[] GetNewDelimiter(string args)
-        {
-            var delimiters = new[] { ParseDelimiter(args) };
-            return delimiters;
-        }
-        private static string ParseDelimiter(string args)
-        {
-            var result = Regex.Match(args, @"//(.+?)\n").Groups[1].Value;
-            return result;
-        }
 
-        private static string TruncateArguments(string args)
+	    private static string TruncateArguments(string args)
         {
             if (args.StartsWith(@"//"))
             {
@@ -63,7 +42,18 @@ namespace StringCalculator
 
         private static int Add(string args, string[] delimiters)
         {
-            return args.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).Sum();
+	        var numbers = GetNumbers(args, delimiters);
+	        var enumerable = numbers.Where(x => x < 0);
+	        if (enumerable.Any())
+	        {
+		        throw new Exception();
+	        }
+			return numbers.Sum();
         }
+
+	    private static IEnumerable<int> GetNumbers(string args, string[] delimiters)
+	    {
+		    return args.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).Select(int.Parse);
+	    }
     }
 }
