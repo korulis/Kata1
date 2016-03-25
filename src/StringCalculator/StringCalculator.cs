@@ -43,13 +43,18 @@ namespace StringCalculator
         private static int Add(string args, string[] delimiters)
         {
 	        var numbers = GetNumbers(args, delimiters);
-	        var enumerable = numbers.Where(x => x < 0);
-	        if (enumerable.Any())
-	        {
-		        throw new Exception();
-	        }
-			return numbers.Sum();
+	        CheckForNegatives(numbers);
+	        return numbers.Sum();
         }
+
+	    private static void CheckForNegatives(IEnumerable<int> numbers)
+	    {
+		    var enumerable = numbers.Where(x => x < 0);
+		    if (enumerable.Any())
+		    {
+			    throw new Exception();
+		    }
+	    }
 
 	    private static IEnumerable<int> GetNumbers(string args, string[] delimiters)
 	    {
